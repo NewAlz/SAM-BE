@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+            padding: 0;
+            margin: 0;
+        }
+
+        .bg-vid-container {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .vid {
+            position: absolute;
+            left: -100%;
+            height: 100vh;
+            width: 300%;
+            pointer-events: none;
+            opacity: 75%;
+        }
+
+        .title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            font-family: "Nova Square", sans-serif;
+            color: white;
+            font-size: 8em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-vid-container">
+        <iframe class="vid"
+            src="https://www.youtube.com/embed/mxpEDRmNQOc?playlist=mxpEDRmNQOc&loop=1&si=B8oDt00qXzOb3tWy&start=6&rel=0&controls=0&disablekb=1&mute=1&autoplay=1&start=6&end=60&start=6"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <div class="title">Welcome</div>
+    </div>
+</body>
+
+</html>

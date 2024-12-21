@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Robert's Webpage</title>
+    <link rel="shortcut icon" href="images/logo.jpeg" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: black;
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100vw;
+
+            padding: 0;
+            margin: 0;
+        }
+
+        .firstlayer {
+            width: 100vw;
+
+            padding: 0;
+            margin: 0;
+        }
+
+        .bg-vid-container {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .vid {
+            position: absolute;
+            left: -200%;
+            height: 100vh;
+            width: 500%;
+            pointer-events: none;
+            opacity: 75%;
+        }
+
+        .title-container {
+            display: flex;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .title-container h1 {
+            font-size: 12em;
+            font-family: "Nova Square", sans-serif;
+            color: transparent;
+            -webkit-text-stroke: 3px aqua;
+        }
+
+        @media only screen and (max-width: 1056px) {
+            .title-container h1 {
+                font-size: 8em;
+    
+            } 
+        }
+
+        @media only screen and (max-height: 300px) {
+            .title-container h1 {
+                font-size: 5em;
+    
+            } 
+        }
+
+        @media only screen and (max-height: 100px) {
+            .title-container h1 {
+                font-size: 3em;
+    
+            } 
+        }
+
+        @media only screen and (max-width: 722px) {
+            .title-container h1 {
+                font-size: 5em;
+    
+            } 
+        }
+
+        @media only screen and (max-width: 452px) {
+            .title-container h1 {
+                font-size: 3em;
+    
+            } 
+        }
+
+        @media only screen and (max-width: 278px) {
+            .title-container h1 {
+                font-size: 2em;
+    
+            } 
+        }
+
+        .letter1 {
+            animation: letter1movement 2s linear ;
+        }
+        
+        @keyframes letter1movement {
+            0% {
+                transform: translateX(-400px) translateY(-600px);
+            }
+            20% {
+                transform: translateX(-400px) translateY(-300px);
+            }
+            30% {
+                transform: translateX(-300px) translateY(-300px);
+            }
+            40% {
+                transform: translateX(-300px) translateY(-200px);
+            }
+            50% {
+                transform: translateX(-200px) translateY(-200px);
+            }
+            60% {
+                transform: translateX(-200px) translateY(-100px);
+            }
+            70% {
+                transform: translateX(-100px) translateY(-100px);
+            }
+            80% {
+                transform: translateX(-100px) translateY(0px);
+            }
+        }
+
+        .letter2 {
+            animation: letter2movement 2s linear;
+        }
+
+        @keyframes letter2movement {
+            0% {
+                transform: rotateY(0deg);
+            }
+            50% {
+                transform: rotateY(360deg);
+            }
+            90% {
+                transform: rotateY(180deg);
+            }
+        }
+
+        .letter7 {
+            animation: letter7movement 2s linear;
+        }
+        @keyframes letter7movement {
+            0%{
+                transform: translateX(0px);
+            }
+            5%{
+                transform: translateX(25px);
+            }
+            10%{
+                transform: translateX(0px);
+            }
+            15%{
+                transform: translateX(25px);
+            }
+            20%{
+                transform: translateX(0px);
+            }
+            25%{
+                transform: translateX(25px);
+            }
+            30%{
+                transform: translateX(0px);
+            }
+            35%{
+                transform: translateX(25px);
+            }
+            40%{
+                transform: translateX(0px);
+            }
+            45%{
+                transform: translateX(25px);
+            }
+            50%{
+                transform: translateX(0px);
+            }
+            55%{
+                transform: translateX(25px);
+            }
+            60%{
+                transform: translateX(0px);
+            }
+            65%{
+                transform: translateX(25px);
+            }
+            70%{
+                transform: translateX(0px);
+            }
+            75%{
+                transform: translateX(25px);
+            }
+            80%{
+                transform: translateX(0px);
+            }
+            85%{
+                transform: translateX(25px);
+            }
+            90%{
+                transform: translateX(0px);
+            }
+            95%{
+                transform: translateX(25px);
+            }
+            100%{
+                transform: translateX(0px);
+            }
+
+        }
+
+        .letter3 {
+            animation: letter3movement 2s linear forwards;
+        }
+
+        @keyframes letter3movement {
+            0% {
+                transform: rotateX(0deg);
+            }
+            100% {
+                transform: rotateX(720deg);
+            }
+        }
+
+        .letter4 {
+            animation: letter4blink 2s linear;
+        }
+
+        @keyframes letter4blink {
+            0% {
+                -webkit-text-stroke: 3px aqua;
+            }
+            10% {
+                -webkit-text-stroke: 0px;
+            }
+            20% {
+                -webkit-text-stroke: 3px aqua;
+            }
+            30% {
+                -webkit-text-stroke: 0px;
+            }
+            40% {
+                -webkit-text-stroke: 3px aqua;
+            }
+            50% {
+                -webkit-text-stroke: 0px;
+            }
+            60% {
+                -webkit-text-stroke: 3px aqua;
+            }
+            70% {
+                -webkit-text-stroke: 0px;
+            }
+            80% {
+                -webkit-text-stroke: 3px aqua;
+            }
+            90% {
+                -webkit-text-stroke: 0px;
+            }
+            100%{
+                -webkit-text-stroke: 3px aqua;
+            }
+        }
+
+        .letter5 {
+            animation: letter5spin 2s linear forwards;
+        }
+
+        @keyframes letter5spin {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(720deg);
+            }
+        }
+
+        .letter6 {
+            animation: letter6movement 2s linear;
+        }
+
+        @keyframes letter6movement {
+            0% {
+                scale: 1;
+            }
+            10% {
+                scale: 1.08;
+            }
+            20% {
+                scale: 1;
+            }
+            30% {
+                scale: 1.08;
+            }
+            40% {
+                scale: 1;
+            }
+            50% {
+                scale: 1.08;
+            }
+            60% {
+                scale: 1;
+            }
+            70% {
+                scale: 1.08;
+            }
+            80% {
+                scale: 1;
+            }
+            90% {
+                scale: 1.08;
+            }
+            100% {
+                scale: 1;
+            }
+        }
+
+
+    </style>
+</head>
+
+<div class="container">
+    <div class="row firstlayer">
+        <div class="col 12">
+            <div class="bg-vid-container p-0">
+                <iframe class="vid"
+                    src="https://www.youtube.com/embed/mxpEDRmNQOc?playlist=mxpEDRmNQOc&loop=1&si=B8oDt00qXzOb3tWy&start=6&rel=0&controls=0&disablekb=1&mute=1&autoplay=1&start=6&end=60&start=6"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                <div class="title-container">
+                    <h1 class="letter1">W</h1>
+                    <h1 class="letter2">E</h1>
+                    <h1 class="letter3">L</h1>
+                    <h1 class="letter4">C</h1>
+                    <h1 class="letter5">O</h1>
+                    <h1 class="letter6">M</h1>
+                    <h1 class="letter7">E</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row my-5">
+        <h1 class="display-3 pt-5" style="color: Royalblue;"><b>Activities</b></h1>
+    </div>
+    <div class="row my-5">
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card m-3 shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Activity 1 - Shibuya</h5>
+                    <p class="card-text">A website about the famous tourist spot in shibuya.</p>
+                    <a href="SAM_H02/index.html" class="btn btn-primary">Open Activity</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card m-3 shadow">
+                <div class="card-body">
+                    <h5 class="card-title">Activity 2 - Rick and Morty</h5>
+                    <p class="card-text">A website with rick and morty search, list, and view using api.</p>
+                    <a href="SAM_H04/index.html" class="btn btn-primary">Open Activity</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

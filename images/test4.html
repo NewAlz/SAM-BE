@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Draggable 3D Box</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: black;
+            overflow-x: hidden;
+            user-select: none;
+        }
+
+        .btn-switch {
+            width: 200px;
+            height: 150px;
+        }
+
+        .scene {
+            margin: 0;
+            width: 300px;
+            height: 300px;
+            perspective: 1200px;
+            background: transparent;
+            perspective-origin: center;
+        }
+
+        .cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(0deg) rotateY(0deg);
+            transition: transform 0.2s ease-out;
+            will-change: transform;
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: black;
+            color: aqua;
+            border: 1px solid white;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .grid-container {
+            display: none;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2.5rem;
+            width: 100%;
+            height: 100vh;
+            justify-items: center;
+            align-items: center;
+            text-align: center;
+            overflow-x: hidden;
+            padding: 50px;
+        }
+
+        .grid {
+            margin: 0;
+            width: 80%;
+            height: 300px;
+            padding: 2rem;
+            box-sizing: border-box;
+            background: black;
+            color: aqua;
+            border: 1px solid aqua;
+            border-radius: 20px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            cursor: pointer;
+            transition: .5s ease;
+        }
+
+        .grid:hover {
+            transform: scale(1.1);
+        }
+
+        .cube-face h4 {
+            margin: 0;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .grid h4 {
+            margin: 0;
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: aqua;
+        }
+
+        .cube-face .heading {
+            background: linear-gradient(to right, #fc72ff, #8f68ff, aqua, #8f68ff, #fc72ff);
+            background-size: 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 2.5s linear infinite;
+            line-height: 1.2;
+        }
+
+        .grid .heading {
+            background: linear-gradient(to right, #fc72ff, #8f68ff, aqua, #8f68ff, #fc72ff);
+            background-size: 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 2.5s linear infinite;
+            line-height: 1.2;
+        }
+
+        .cube-face img {
+            border: 3px solid aqua;
+            box-shadow: 0 0 3px aqua;
+            border-radius: 20px;
+            width: 250px;
+            height: 150px;
+            margin-bottom: 10px;
+            z-index: 20;
+        }
+
+        .cube-face img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px aqua;
+        }
+
+        .grid img {
+            border: 3px solid aqua;
+            box-shadow: 0 0 3px aqua;
+            border-radius: 20px;
+            width: 250px;
+            height: 150px;
+            margin-bottom: 10px;
+            z-index: 20;
+        }
+
+        @keyframes gradient {
+            to {
+                background-position: 200%;
+            }
+        }
+
+        .front {
+            transform: rotateY(0deg) translateZ(150px);
+        }
+
+        .back {
+            transform: rotateY(180deg) translateZ(150px);
+        }
+
+        .left {
+            transform: rotateY(-90deg) translateZ(150px);
+        }
+
+        .right {
+            transform: rotateY(90deg) translateZ(150px);
+        }
+
+        .top {
+            transform: rotateX(90deg) translateZ(150px);
+        }
+
+        .bottom {
+            transform: rotateX(-90deg) translateZ(150px);
+        }
+
+        .cube button {
+            font-size: 3rem;
+        }
+
+        @media (max-width: 800px) {
+            .grid-container {
+                display: grid;
+            }
+
+            .scene {
+                display: none;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .scene {
+                padding: 20px;
+                
+                
+            }
+            .grid {
+                justify-content: center;
+                align-items: center;
+                margin: 0;
+                padding: 10px;
+                gap: 1rem;
+                width: 95%;
+                height: 225px;
+                
+            }
+
+            .grid img {
+                width: 150px;
+                height: 100px;
+            }
+
+            .grid:hover {
+                transform: scale(1.1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <button type="button" class="btn-switch" id="toggleButton">3d</button> -->
+    <div class="scene" id="scene">
+        <div class="cube" id="cube">
+            <div class="cube-face front d-flex flex-column justify-content-center align-items-center text-center">
+                <h4 class="text-center heading">SAM - A01</h4>
+                <h4 class="text-center mb-2">3-Fold Brochure</h4>
+                <a href="https://www.canva.com/design/DAGTAM6X-SI/MFGJMTJFrbN_5_IcMOI1FA/edit">
+                    <img src="brochure.png">
+                </a>
+            </div>
+            <div class="cube-face back d-flex flex-column justify-content-center align-items-center text-center">
+                <h4 class="text-center heading">SAM - A03</h4>
+                <h4 class="text-center mb-2">Landing Page</h4>
+                <img src="brochure.png">
+            </div>
+            <div class="cube-face left d-flex flex-column justify-content-center align-items-center text-center">
+                <h4 class="text-center heading">SAM - A04</h4>
+                <h4 class="text-center mb-2">API Page</h4>
+                <img src="brochure.png">
+            </div>
+            <div class="cube-face right d-flex flex-column justify-content-center align-items-center text-center">
+                <h4 class="text-center heading">SAM - A02</h4>
+                <h4 class="text-center mb-2">Shibuya Tourist Spots</h4>
+                <img src="brochure.png">
+            </div>
+            <div class="cube-face top d-flex flex-column justify-content-center align-items-center text-center">
+                <h4 class="text-center heading">SAM - M01</h4>
+                <h4 class="text-center mb-2">Youtube Embed</h4>
+                <img src="brochure.png">
+            </div>
+            <div class="cube-face bottom d-flex flex-column justify-content-center align-items-center text-center">
+                <h4 class="text-center heading">SAM - M02</h4>
+                <h4 class="text-center mb-2">Unknown</h4>
+                <img src="brochure.png">
+            </div>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="grid">
+            <h4 class="text-center heading">SAM - A02</h4>
+            <h4 class="text-center mb-2">Shibuya Tourist Spots</h4>
+            <img src="brochure.png">
+        </div>
+        <div class="grid">
+            <h4 class="text-center heading">SAM - A02</h4>
+            <h4 class="text-center mb-2">Shibuya Tourist Spots</h4>
+            <img src="brochure.png">
+        </div>
+        <div class="grid">
+            <h4 class="text-center heading">SAM - A02</h4>
+            <h4 class="text-center mb-2">Shibuya Tourist Spots</h4>
+            <img src="brochure.png">
+        </div>
+        <div class="grid">
+            <h4 class="text-center heading">SAM - A02</h4>
+            <h4 class="text-center mb-2">Shibuya Tourist Spots</h4>
+            <img src="brochure.png">
+        </div>
+        <div class="grid">
+            <h4 class="text-center heading">SAM - A02</h4>
+            <h4 class="text-center mb-2">Shibuya Tourist Spots</h4>
+            <img src="brochure.png">
+        </div>
+        <div class="grid">
+            <h4 class="text-center heading">SAM - A02</h4>
+            <h4 class="text-center mb-2">Shibuya Tourist Spots</h4>
+            <img src="brochure.png">
+        </div>
+    </div>
+
+    <script>
+        const cube = document.getElementById("cube");
+        let startX, startY, currentX = 0, currentY = 0;
+        let isDragging = false;
+
+        const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+
+        const dragStart = (e) => {
+            e.preventDefault(); // Prevent text selection
+            isDragging = true;
+            startX = e.clientX || e.touches[0].clientX;
+            startY = e.clientY || e.touches[0].clientY;
+
+            document.addEventListener("mousemove", dragMove);
+            document.addEventListener("mouseup", dragEnd);
+            document.addEventListener("touchmove", dragMove);
+            document.addEventListener("touchend", dragEnd);
+        };
+
+        const dragMove = (e) => {
+            if (!isDragging) return;
+
+            const x = e.clientX || e.touches[0].clientX;
+            const y = e.clientY || e.touches[0].clientY;
+
+            const deltaX = x - startX;
+            const deltaY = y - startY;
+
+            currentX += deltaX * 0.5;
+            currentY -= deltaY * 0.5;
+
+            currentY = clamp(currentY, -89, 89);
+
+            cube.style.transform = `rotateX(${currentY}deg) rotateY(${currentX}deg)`;
+
+            startX = x;
+            startY = y;
+        };
+
+        const dragEnd = () => {
+            isDragging = false;
+
+            document.removeEventListener("mousemove", dragMove);
+            document.removeEventListener("mouseup", dragEnd);
+            document.removeEventListener("touchmove", dragMove);
+            document.removeEventListener("touchend", dragEnd);
+        };
+
+        cube.addEventListener("mousedown", dragStart);
+        cube.addEventListener("touchstart", dragStart);
+
+        var scene = document.getElementById('scene');
+
+        //toggleButton.addEventListener("click", () => {
+            //if (scene.style.display === "none") {
+                //scene.style.display = "block";
+                //toggleButton.innerHTML = "3d";
+            //} else {
+                //scene.style.display = "none";
+                //toggleButton.innerHTML = "2d";
+            //}
+        //});
+
+    </script>
+</body>
+
+</html>

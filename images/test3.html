@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        body {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .birds-container {
+            position: relative;
+            width: 100vw;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .birds {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-image: url("birds1.PNG");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        
+        }
+
+        .bird1 {
+            animation: 
+            flight .5s linear infinite,
+            movement 5s linear infinite;
+        }
+
+        .bird2 {
+            background-image: none;
+            animation: 
+            flight .5s linear .5s infinite,
+            movement 5s linear .5s infinite;
+        }
+
+        .bird3 {
+            background-image: none;
+            animation: 
+            flight .5s linear 1s infinite,
+            movement 5s linear .5s infinite;
+        }
+
+        .bird4 {
+            background-image: none;
+            animation: 
+            flight .5s linear 1.5s infinite,
+            movement 5s linear .5s infinite;
+        }
+
+        @keyframes flight {
+            0% {
+                background-image: url("birds1.PNG");
+            }
+            12.5% {
+                background-image: url("birds2.PNG");
+            }
+            25% {
+                background-image: url("birds3.PNG");
+            }
+            37.5% {
+                background-image: url("birds4.PNG");
+            }
+            50% {
+                background-image: url("birds5.PNG");
+            }
+            62.5% {
+                background-image: url("birds6.PNG");
+            }
+            75% {
+                background-image: url("birds7.PNG");
+            }
+            87.5% {
+                background-image: url("birds8.PNG");
+            }
+            100% {
+                background-image: url("birds9.PNG");
+            }
+        }
+
+        @keyframes movement {
+            0%{
+                transform: translateX(-1000px);
+            }
+            100%{
+                transform: translateX(1000px);
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="birds-container">
+            <div class="birds bird1"></div>
+            <!-- <div class="birds bird2"></div>
+            <div class="birds bird3"></div>
+            <div class="birds bird4"></div> -->
+        </div>
+    </div>
+</body>
+
+</html>
